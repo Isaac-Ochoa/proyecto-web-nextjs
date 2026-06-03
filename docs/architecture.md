@@ -76,3 +76,11 @@ Para el trabajo de las 5 personas, se propone el siguiente flujo de Git basado e
    - Crear un **Pull Request (PR)** hacia `develop`.
    - Requiere la revisión y aprobación de al menos **1 compañero de equipo** (Peer Review).
    - El PR debe pasar con éxito los comandos de construcción (`npm run build`) y formateo (`npm run format:check` y `npm run lint`).
+
+---
+
+## 5. Documentación de Características Específicas
+
+Para obtener información detallada sobre las estructuras de datos y especificaciones técnicas de características individuales, consulte:
+
+- **Catálogo de Productos**: [Estructura de Datos del Catálogo](catalog-data-structure.md)
