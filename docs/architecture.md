@@ -79,7 +79,15 @@ Para el trabajo de las 5 personas, se propone el siguiente flujo de Git basado e
 
 ---
 
-## 5. Módulo de Administración (Inventario)
+## 5. Documentación de Características Específicas
+
+Para obtener información detallada sobre las estructuras de datos y especificaciones técnicas de características individuales, consulte los siguientes recursos:
+
+- **Catálogo de Productos**: [Estructura de Datos del Catálogo](catalog-data-structure.md)
+
+---
+
+## 6. Módulo de Administración (Inventario)
 
 El módulo `/features/admin` maneja la visualización del inventario y la creación/edición de productos.
 
