@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { RegisterForm } from "../../features/auth/components/RegisterForm";
+import { LoginForm } from "../../features/auth/components/LoginForm";
 
 export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(false);
@@ -21,7 +22,7 @@ export default function LoginPage() {
         </div>
 
         {isLogin ? (
-          <div className="py-8 text-zinc-500">Formulario de Login en desarrollo...</div>
+          <LoginForm />
         ) : (
           <RegisterForm />
         )}
