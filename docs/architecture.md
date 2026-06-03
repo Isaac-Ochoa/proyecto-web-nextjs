@@ -81,6 +81,35 @@ Para el trabajo de las 5 personas, se propone el siguiente flujo de Git basado e
 
 ## 5. Documentación de Características Específicas
 
-Para obtener información detallada sobre las estructuras de datos y especificaciones técnicas de características individuales, consulte:
+Para obtener información detallada sobre las estructuras de datos y especificaciones técnicas de características individuales, consulte los siguientes recursos:
 
 - **Catálogo de Productos**: [Estructura de Datos del Catálogo](catalog-data-structure.md)
+
+---
+
+## 6. Módulo de Administración (Inventario)
+
+El módulo `/features/admin` maneja la visualización del inventario y la creación/edición de productos.
+
+### Campos del Formulario de Inventario y Reglas de Validación:
+
+| Campo                                        | Tipo        | Requerido | Validación / Regla                                                             |
+| :------------------------------------------- | :---------- | :-------- | :----------------------------------------------------------------------------- |
+| **Nombre** (`name`)                          | Texto       | Sí        | Mínimo 3 caracteres.                                                           |
+| **SKU** (`sku`)                              | Texto       | Sí        | Debe coincidir con el formato `PROD-XXXX-YY` (ej. `PROD-1024-EL`) y ser único. |
+| **Descripción** (`description`)              | Texto largo | Sí        | No vacío.                                                                      |
+| **Categoría** (`category`)                   | Selección   | Sí        | Una de: `electronics`, `clothing`, `home`, `sports`, `books`, `other`.         |
+| **Precio de Venta** (`price`)                | Número      | Sí        | Mayor a `0`.                                                                   |
+| **Precio de Comparación** (`compareAtPrice`) | Número      | No        | Opcional. Si se define, debe ser mayor que el Precio de Venta.                 |
+| **Stock** (`stock`)                          | Entero      | Sí        | Número entero no negativo (mayor o igual a `0`).                               |
+| **Estado** (`status`)                        | Selección   | Sí        | Uno de: `active`, `draft`, `out_of_stock`.                                     |
+| **URL de Imagen** (`imageUrl`)               | Texto (URL) | No        | Debe ser una URL válida si se proporciona.                                     |
+| **Peso** (`weight`)                          | Número      | No        | Peso físico en kilogramos. No negativo.                                        |
+| **Dimensiones** (`width`, `height`, `depth`) | Números     | No        | Ancho, alto y largo físico en centímetros. No negativos.                       |
+
+### Flujo de Datos y Componentes del Módulo:
+
+1. `types.ts`: Define las interfaces `Product`, `ProductDimensions` y `ProductFormInput`.
+2. `ProductForm.tsx`: Componente modular para el registro y edición. Implementa validaciones detalladas y vista previa de imagen.
+3. `InventoryTable.tsx`: Tabla de datos interactiva con soporte para ordenación dinámica, búsquedas por nombre/SKU, filtrado por categorías/estado, paginación dinámica y alertas de nivel de stock.
+4. `InventoryDashboard.tsx`: Orquestador que mantiene el estado local del inventario y calcula las estadísticas y alertas críticas mostradas en las tarjetas superiores.
