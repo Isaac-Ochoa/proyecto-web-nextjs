@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# E-Commerce Collaborative Project
 
-## Getting Started
+Este es el repositorio base para el proyecto de E-Commerce, diseñado para el trabajo colaborativo de un equipo de **5 personas**. La arquitectura está estructurada de forma modular para mitigar los conflictos de fusión y facilitar el desarrollo independiente de funcionalidades.
 
-First, run the development server:
+---
+
+## 🛠️ Tecnologías y Configuración
+
+- **Next.js 15+** (App Router)
+- **TypeScript**
+- **Tailwind CSS**
+- **ESLint**
+- **Prettier** (con plugin de ordenamiento automático de clases Tailwind)
+
+---
+
+## 📂 Estructura del Proyecto
+
+El desarrollo está organizado por características aisladas dentro de la carpeta `/features/` y páginas independientes en `/app/`:
+
+- `/features/auth` ↔️ `/app/login/page.tsx`
+- `/features/catalog` ↔️ `/app/productos/page.tsx`
+- `/features/cart` ↔️ `/app/carrito/page.tsx`
+- `/features/admin` ↔️ `/app/admin/page.tsx`
+
+Para más detalles acerca de las decisiones de diseño y las reglas de gobernanza del repositorio, consulta la [Documentación de Arquitectura](docs/architecture.md).
+
+---
+
+## 🚀 Comenzando
+
+### Prerrequisitos
+
+- Node.js (v18.x o superior)
+- npm (v9.x o superior)
+
+### Instalación
+
+1. Clona el repositorio:
+
+   ```bash
+   git clone <url-del-repositorio>
+   cd ecommerce-nextjs
+   ```
+
+2. Instala las dependencias:
+   ```bash
+   npm install
+   ```
+
+### Desarrollo Local
+
+Inicia el servidor de desarrollo:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el resultado.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📏 Estándares y Calidad del Código
 
-## Learn More
+Para mantener la consistencia en el formato del código de todo el equipo, se han configurado reglas estrictas de Prettier y ESLint.
 
-To learn more about Next.js, take a look at the following resources:
+### Comandos de Utilidad
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Iniciar servidor de desarrollo**: `npm run dev`
+- **Construir para producción**: `npm run build`
+- **Ejecutar análisis estático (Linter)**: `npm run lint`
+- **Corregir y formatear el código**: `npm run format`
+- **Verificar formato del código**: `npm run format:check`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🤝 Flujo de Colaboración (Git Flow)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Crea tu rama desde `develop`: `git checkout -b feature/<feature-name>-<desc>`
+2. Desarrolla la lógica dentro de `/features/<feature-name>` y conéctala en su respectiva `/app/<route>/page.tsx`.
+3. Ejecuta `npm run format` y `npm run lint` antes de hacer commit.
+4. Sube tu rama y abre un Pull Request hacia `develop`.
+5. Consigue al menos la revisión de un compañero de equipo antes de integrar los cambios.
